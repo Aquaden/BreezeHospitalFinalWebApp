@@ -19,49 +19,49 @@ namespace BreezeHospitalWebApp.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             var data = await _operationservice.GetAllAsync();
             return StatusCode(data.Status, data);
         }
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _operationservice.GetByIdAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpGet("{pId}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> GetOperationsByPatientId(int pId)
+        [HttpGet("{patientId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetOperationsByPatientId(int patientId)
         {
-            var data = await _operationservice.GetByPatientIdAsync(pId);
+            var data = await _operationservice.GetByPatientIdAsync(patientId);
             return StatusCode(data.Status, data);
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
-        
-        public async Task<IActionResult> Add(OperationDto opt)
+
+        public async Task<IActionResult> Add(OperationDto operation)
         {
-            var data = await _operationservice.AddAsync(opt);
+            var data = await _operationservice.AddAsync(operation);
             return StatusCode(data.Status, data);
         }
-        [HttpDelete]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> Delete(int optId)
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var data = await _operationservice.DeleteAsync(optId);
+            var data = await _operationservice.DeleteAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         
-        public async Task<IActionResult> Update(OperationDto opt, int id)
+        public async Task<IActionResult> Update(OperationDto operation, int id)
         {
-            var data = await _operationservice.UpdateAsync(opt, id);
+            var data = await _operationservice.UpdateAsync(operation, id);
             return StatusCode(data.Status, data);
         }
     }

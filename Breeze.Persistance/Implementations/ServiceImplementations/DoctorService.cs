@@ -104,11 +104,11 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<List<DoctorsGetDto>>> GetBySpecialization(string spname)
+        public async Task<ResponseModel<List<DoctorsGetDto>>> GetBySpecialization(string specialization)
         {
             ResponseModel<List<DoctorsGetDto>> responseModel = new ResponseModel<List<DoctorsGetDto>>() { Data = null, Status = 400 };
-            var spel = spname.ToUpper();
-            List<Doctors> doctors =await _doctorRepository.GetAll().Where(x => x.Specialization.ToUpper() == spel).ToListAsync();
+            var spel = specialization.ToUpper();
+            List<Doctors> doctors =await _doctorRepository.GetAll().Where(x => x.Specialization.ToUpper() == specialization).ToListAsync();
 
 
             if (doctors != null)

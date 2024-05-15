@@ -19,57 +19,57 @@ namespace BreezeHospitalWebApp.Controllers
             
         }
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             var data = await _doctorService.GetAllAsync();
             return StatusCode(data.Status, data);
         }
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _doctorService.GetByIdAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpGet("{docId}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> GetOperationsOfDoctor(int docId)
+        [HttpGet("{doctorId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetOperationsOfDoctor(int doctorId)
         {
-            var data = await _doctorService.GetOperationsOfDoctorAsync(docId);
+            var data = await _doctorService.GetOperationsOfDoctorAsync(doctorId);
             return StatusCode(data.Status, data);
         }
-        [HttpGet("{doccId}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> GetPatientsOfDoctor(int doccId)
+        [HttpGet("{doctorId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetPatientsOfDoctor(int doctorId)
         {
-            var data = await _doctorService.GetPatientsOfDoctorAsync(doccId);
+            var data = await _doctorService.GetPatientsOfDoctorAsync(doctorId);
             return StatusCode(data.Status, data);
         }
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> GetDoctorsBySpecialization(string spel)
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetDoctorsBySpecialization(string specialization)
         {
-            var data = await _doctorService.GetBySpecialization(spel);
+            var data = await _doctorService.GetBySpecialization(specialization);
             return StatusCode(data.Status, data);
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         public async Task<IActionResult> Add(DoctorsDto doctor)
         {
             var data = await _doctorService.AddAsync(doctor);
             return StatusCode(data.Status, data);
         }
-        [HttpDelete]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> Delete(int docId)
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var data = await _doctorService.DeleteAsync(docId);
+            var data = await _doctorService.DeleteAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         public async Task<IActionResult> Update(DoctorsDto doctor, int id)
         {

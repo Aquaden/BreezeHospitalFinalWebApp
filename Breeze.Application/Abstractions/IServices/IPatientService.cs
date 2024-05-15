@@ -14,8 +14,8 @@ namespace Breeze.Application.Abstractions.IServices
         public Task<ResponseModel<List<PatientsGetDto>>> GetAllAsync();
         public Task<ResponseModel<PatientsGetDto>> GetByIdAsync(int id);
         //public Task<ResponseModel<PatientsDto>> GetByName(string name);
-        public Task<ResponseModel<List<DoctorsGetDto>>> GetDoctorsOfPatientAsync(int pId);
-        public Task<ResponseModel<List<OperationGetDto>>> GetOperationsOfPatientAsync(int pId);
+        public Task<ResponseModel<List<DoctorsGetDto>>> GetDoctorsOfPatientAsync(int patientId);
+        public Task<ResponseModel<List<OperationGetDto>>> GetOperationsOfPatientAsync(int patientId);
         public Task<ResponseModel<PatientsDto>> AddAsync(PatientsDto patient);
         public Task<ResponseModel<bool>> UpdateAsync(PatientsDto patient, int id);
         public Task<ResponseModel<bool>> DeleteAsync(int id);

@@ -31,28 +31,28 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             _docService = _unitOfWork.GetRepository<Doctors>();
         }
 
-        public async Task<ResponseModel<DoctorOperationAddDto>> AddAsync(DoctorOperationAddDto docOpt)
+        public async Task<ResponseModel<DoctorOperationAddDto>> AddAsync(DoctorOperationAddDto doctorOperation)
         {
             ResponseModel<DoctorOperationAddDto> responseModel = new ResponseModel<DoctorOperationAddDto>() { Data = null, Status = 400 };
-            DoctorOperations doctopt = _mapper.Map<DoctorOperations>(docOpt);
-            if (docOpt != null)
+            DoctorOperations doctopt = _mapper.Map<DoctorOperations>(doctorOperation);
+            if (doctopt != null)
             {
                 await _docOprService.Add(doctopt);
                 int rows = await _unitOfWork.SaveAsync();
                 if (rows > 0)
                 {
                     responseModel.Status = 200;
-                    responseModel.Data = docOpt;
+                    responseModel.Data = doctorOperation;
                 }
 
             }
             return responseModel;
         }
 
-        public async Task<ResponseModel<bool>> DeleteAsync(int docId)
+        public async Task<ResponseModel<bool>> DeleteAsync(int doctorId)
         {
             ResponseModel<bool> responseModel = new ResponseModel<bool>() { Data = false, Status = 400 };
-            await _docOprService.DeleteById(docId);
+            await _docOprService.DeleteById(doctorId);
             int rows = await _unitOfWork.SaveAsync();
             if (rows > 0)
             {
@@ -105,13 +105,13 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
 
        
 
-        public async Task<ResponseModel<bool>> UpdateAsync(DoctorOperationDto doctOpt)
+        public async Task<ResponseModel<bool>> UpdateAsync(DoctorOperationAddDto doctorOperation,int id)
         {
             ResponseModel<bool> responseModel = new ResponseModel<bool>() { Data = false, Status = 404 };
-            var olddata = await _docOprService.GetByid(doctOpt.Id);
+            var olddata = await _docOprService.GetByid(id);
             if (olddata != null)
             {
-                _mapper.Map<DoctorOperationDto, DoctorOperations>(doctOpt, olddata);
+                _mapper.Map<DoctorOperationAddDto, DoctorOperations>(doctorOperation, olddata);
                 var rows = await _unitOfWork.SaveAsync();
                 if (rows > 0)
                 {

@@ -69,10 +69,10 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<OperationGetDto>> GetByIdAsync(int optId)
+        public async Task<ResponseModel<OperationGetDto>> GetByIdAsync(int operationId)
         {
             ResponseModel<OperationGetDto> responseModel = new ResponseModel<OperationGetDto>() { Data = null, Status = 404 };
-            Operations opt = await _operationRepository.GetByid(optId);
+            Operations opt = await _operationRepository.GetByid(operationId);
             if (opt != null)
             {
                 var data = _mapper.Map<OperationGetDto>(opt);
@@ -82,10 +82,10 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<List<OperationGetDto>>> GetByPatientIdAsync(int optId)
+        public async Task<ResponseModel<List<OperationGetDto>>> GetByPatientIdAsync(int operationId)
         {
             ResponseModel<List<OperationGetDto>> responseModel = new ResponseModel<List<OperationGetDto>>() { Data = null, Status = 404 };
-            List<Operations> operations = await _operationRepository.GetAll().Where(x => x.PatientId == optId).ToListAsync();
+            List<Operations> operations = await _operationRepository.GetAll().Where(x => x.PatientId == operationId).ToListAsync();
             if (operations != null && operations.Count > 0)
             {
                 var data = _mapper.Map<List<OperationGetDto>>(operations);

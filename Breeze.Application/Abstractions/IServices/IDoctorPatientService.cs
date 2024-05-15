@@ -13,10 +13,10 @@ namespace Breeze.Application.Abstractions.IServices
     {
         public Task<ResponseModel<List<DoctorPatientDto>>> GetAllAsync();
         public Task<ResponseModel<DoctorPatientDto>> GetByIdAsync(int id);
-        public Task<ResponseModel<DoctorPatientAddDto>> AddAsync(DoctorPatientAddDto docPat);
+        public Task<ResponseModel<DoctorPatientAddDto>> AddAsync(DoctorPatientAddDto doctorPatient);
         
-        public Task<ResponseModel<bool>> UpdateAsync(DoctorPatientDto docPat);
-        public Task<ResponseModel<bool>> DeleteAsync(int Id);
+        public Task<ResponseModel<bool>> UpdateAsync(DoctorPatientAddDto doctorPatient,int id);
+        public Task<ResponseModel<bool>> DeleteAsync(int id);
 
     }
 }

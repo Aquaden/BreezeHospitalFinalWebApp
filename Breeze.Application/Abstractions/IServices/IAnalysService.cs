@@ -13,7 +13,7 @@ namespace Breeze.Application.Abstractions.IServices
     {
         public Task<ResponseModel<List<AnalysGetDto>>> GetAllAsync();
         public Task<ResponseModel<AnalysGetDto>> GetByIdAsync(int id);
-        public Task<ResponseModel<List<AnalysGetDto>>> GetAllAnalysByPatientIdAsync(int pId);
+        public Task<ResponseModel<List<AnalysGetDto>>> GetAllAnalysByPatientIdAsync(int patientId);
         public Task<ResponseModel<AnalysDto>> AddAsync(AnalysDto analys);
         public Task<ResponseModel<bool>> UpdateAsync(AnalysDto analys,int id);
         public Task<ResponseModel<bool>> DeleteAsync(int id);

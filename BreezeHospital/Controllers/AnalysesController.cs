@@ -14,49 +14,49 @@ namespace BreezeHospitalWebApp.Controllers
         public IAnalysService _analysService;
         public AnalysesController(IAnalysService analysService)
         {
-                
+
             _analysService = analysService;
         }
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             var data = await _analysService.GetAllAsync();
             return StatusCode(data.Status, data);
         }
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _analysService.GetByIdAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpGet("{pId}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> GetAnalysesByPatiensId(int pId)
+        [HttpGet("{patientId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetAnalysesByPatiensId(int patientId)
         {
-            var data = await _analysService.GetAllAnalysByPatientIdAsync(pId);
+            var data = await _analysService.GetAllAnalysByPatientIdAsync(patientId);
             return StatusCode(data.Status, data);
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         public async Task<IActionResult> Add(AnalysDto analys)
         {
             var data = await _analysService.AddAsync(analys);
             return Ok(data);
         }
-        [HttpDelete]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpDelete("{analysId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> Delete(int analysId)
         {
             var data = await _analysService.DeleteAsync(analysId);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
-        public async Task<IActionResult> Update(AnalysDto analys,int id)
+        public async Task<IActionResult> Update(AnalysDto analys,int id)//routeparams id
         {
             var data = await _analysService.UpdateAsync(analys,id);
             return StatusCode(data.Status, data);

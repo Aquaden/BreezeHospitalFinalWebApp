@@ -21,14 +21,14 @@ namespace BreezeHospitalWebApp.Controllers
             var data = await _authoService.LoginAsync(usernameOrEmail, password);
             return StatusCode(data.Status, data);
         }
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPut]
         public async Task<IActionResult> LogOut(string usernameOremail)
         {
             var data = await _authoService.LogOutAsync(usernameOremail);
             return StatusCode(data.Status, data);
         }
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPost]
         public async Task<IActionResult> UpdatePassword(string email, string curPas, string newPas)
         {
@@ -36,9 +36,9 @@ namespace BreezeHospitalWebApp.Controllers
             return StatusCode(data.Status, data);
         }
         [HttpGet]
-        public async Task<IActionResult> LoginWithRefreshToken(string refreshtoken)
+        public async Task<IActionResult> CreateNewRefreshToken(string refreshtoken)//deyish
         {
-            var data = await _authoService.LoginWithResreshTokenAsync(refreshtoken);
+            var data = await _authoService.CreateNewResreshTokenAsync(refreshtoken);
             return StatusCode(data.Status, data);
 
         }

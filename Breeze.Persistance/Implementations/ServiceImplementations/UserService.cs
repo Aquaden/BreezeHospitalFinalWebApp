@@ -163,13 +163,13 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
 
         }
 
-        public async Task<ResponseModel<string[]>> GetRolesToUserAsync(string usernameorid)
+        public async Task<ResponseModel<string[]>> GetRolesToUserAsync(string usernameOrId)
         {
             ResponseModel<string[]> response = new ResponseModel<string[]>() { Data = null, Status = 400 };
-            var user = await _userManager.FindByNameAsync(usernameorid);
+            var user = await _userManager.FindByNameAsync(usernameOrId);
             if (user == null)
             {
-                user = await _userManager.FindByIdAsync(usernameorid);
+                user = await _userManager.FindByIdAsync(usernameOrId);
 
             }
             if (user == null)

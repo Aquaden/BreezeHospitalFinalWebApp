@@ -14,7 +14,7 @@ namespace Breeze.Application.Abstractions.IServices
         Task UpdateRefreshToken(string refreshToken, AppUser user, DateTime dateTime);
         public Task<ResponseModel<bool>> AssignRolesToUserAsync(string userid, string[] roles);
         public Task<ResponseModel<List<GetUserDto>>> GetAllUserAsync();
-        public Task<ResponseModel<string[]>> GetRolesToUserAsync(string usernameorid);
+        public Task<ResponseModel<string[]>> GetRolesToUserAsync(string usernameOrId);
         public Task<ResponseModel<CreateUserResponseDto>> AddAsync(CreateUserDto st);
         public Task<ResponseModel<bool>> UpdateAsync(UpdateUserDto st);
         public Task<ResponseModel<bool>> DeleteAsync(string idOrName);

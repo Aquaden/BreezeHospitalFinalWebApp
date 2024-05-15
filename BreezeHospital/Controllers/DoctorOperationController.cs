@@ -20,14 +20,14 @@ namespace BreezeHospitalWebApp.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             var data = await _doctorOperationService.GetAllAsync();
             return StatusCode(data.Status, data);
         }
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _doctorOperationService.GetByIdAsync(id);
@@ -35,7 +35,7 @@ namespace BreezeHospitalWebApp.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         
         public async Task<IActionResult> Add(DoctorOperationAddDto docOpt)
@@ -43,19 +43,19 @@ namespace BreezeHospitalWebApp.Controllers
             var data = await _doctorOperationService.AddAsync(docOpt);
             return StatusCode(data.Status, data);
         }
-        [HttpDelete]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpDelete("{Id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> Delete(int Id)
         {
             var data = await _doctorOperationService.DeleteAsync(Id);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpPut("{Id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]//admin user sill
         [ValidateModel]
-        public async Task<IActionResult> Update(DoctorOperationDto docOpt)
+        public async Task<IActionResult> Update(DoctorOperationAddDto doctorOperation, int id)
         {
-            var data = await _doctorOperationService.UpdateAsync(docOpt);
+            var data = await _doctorOperationService.UpdateAsync(doctorOperation,id);
             return StatusCode(data.Status, data);
         }
     }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BreezeHospitalWebApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class RoleController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace BreezeHospitalWebApp.Controllers
             var data = await _roleService.AddRole(name);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
         public async Task<IActionResult> UpdateAsync(string id, string name)
         {

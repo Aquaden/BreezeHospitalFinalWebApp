@@ -21,14 +21,14 @@ namespace BreezeHospitalWebApp.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             var data = await _doctPatService.GetAllAsync();
             return StatusCode(data.Status, data);
         }
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _doctPatService.GetByIdAsync(id);
@@ -36,26 +36,26 @@ namespace BreezeHospitalWebApp.Controllers
         }
         
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         public async Task<IActionResult> Add(DoctorPatientAddDto docPat)
         {
             var data = await _doctPatService.AddAsync(docPat);
             return StatusCode(data.Status, data);
         }
-        [HttpDelete]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> Delete(int Id)
         {
             var data = await _doctPatService.DeleteAsync(Id);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
-        public async Task<IActionResult> Update(DoctorPatientDto docpat)
+        public async Task<IActionResult> Update(DoctorPatientAddDto doctorPatient,int id)
         {
-            var data = await _doctPatService.UpdateAsync(docpat);
+            var data = await _doctPatService.UpdateAsync(doctorPatient,id);
             return StatusCode(data.Status, data);
         }
     }

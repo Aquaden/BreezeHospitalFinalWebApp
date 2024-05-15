@@ -22,17 +22,17 @@ namespace BreezeHospitalWebApp.Controllers
         [HttpPost]//url kicikle yazilir
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
         [ValidateModel]
-        public async Task<IActionResult> AddAsync(CreateUserDto st)
+        public async Task<IActionResult> AddAsync(CreateUserDto student)
         {
-            var data = await _userService.AddAsync(st);
+            var data = await _userService.AddAsync(student);
             return StatusCode(data.Status, data);
         }
         [HttpPut]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
         [ValidateModel]
-        public async Task<IActionResult> UpdateAsync(UpdateUserDto st)
+        public async Task<IActionResult> UpdateAsync(UpdateUserDto student)
         {
-            var data = await _userService.UpdateAsync(st);
+            var data = await _userService.UpdateAsync(student);
             return StatusCode(data.Status, data);
         }
         [HttpDelete("{idOrName}")]

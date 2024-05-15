@@ -12,8 +12,8 @@ namespace Breeze.Application.Abstractions.IServices
     public interface IOperationService
     {
         public Task<ResponseModel<List<OperationGetDto>>> GetAllAsync();
-        public Task<ResponseModel<OperationGetDto>> GetByIdAsync(int optId);
-        public Task<ResponseModel<List<OperationGetDto>>> GetByPatientIdAsync(int optId);
+        public Task<ResponseModel<OperationGetDto>> GetByIdAsync(int operationId);
+        public Task<ResponseModel<List<OperationGetDto>>> GetByPatientIdAsync(int operationId);
         public Task<ResponseModel<OperationDto>> AddAsync(OperationDto operation);
         public Task<ResponseModel<bool>> UpdateAsync(OperationDto operation, int id);
         public Task<ResponseModel<bool>> DeleteAsync(int id);

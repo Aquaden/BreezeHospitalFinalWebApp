@@ -56,7 +56,7 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<TokenDto>> LoginWithResreshTokenAsync(string refreshToken)
+        public async Task<ResponseModel<TokenDto>> CreateNewResreshTokenAsync(string refreshToken)
         {
             ResponseModel<TokenDto> responseModel = new ResponseModel<TokenDto>() { Data = null, Status = 404 };
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);

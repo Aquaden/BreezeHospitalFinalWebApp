@@ -11,7 +11,7 @@ namespace Breeze.Application.Abstractions.IServices
     public interface IAuthoService
     {
         public Task<ResponseModel<TokenDto>> LoginAsync(string usernameOrEmail, string password);
-        public Task<ResponseModel<TokenDto>> LoginWithResreshTokenAsync(string refreshToken);
+        public Task<ResponseModel<TokenDto>> CreateNewResreshTokenAsync(string refreshToken);
         public Task<ResponseModel<bool>> LogOutAsync(string userNameOrEmail);
         public Task<ResponseModel<bool>> PasswordResetAsync(string email, string curPas, string newPas);
 

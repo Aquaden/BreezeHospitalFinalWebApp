@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BreezeHospitalWebApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class PatientsController : ControllerBase
     {
@@ -19,50 +19,50 @@ namespace BreezeHospitalWebApp.Controllers
             _patientService = patientService;
         }
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             var data = await _patientService.GetAllAsync();
             return StatusCode(data.Status, data);
         }
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _patientService.GetByIdAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpGet("{pId}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> GetDoctorsOfPatient(int pId)
+        [HttpGet("{patientId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetDoctorsOfPatient(int patientId)
         {
-            var data = await _patientService.GetDoctorsOfPatientAsync(pId);
+            var data = await _patientService.GetDoctorsOfPatientAsync(patientId);
             return StatusCode(data.Status, data);
         }
         [HttpGet("{patientId}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetOperationsOfPatient(int patientId)
         {
             var data = await _patientService.GetOperationsOfPatientAsync(patientId);
             return StatusCode(data.Status, data);
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         public async Task<IActionResult> Add(PatientsDto patient)
         {
             var data = await _patientService.AddAsync(patient);
             return StatusCode(data.Status, data);
         }
-        [HttpDelete]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
-        public async Task<IActionResult> Delete(int patId)
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var data = await _patientService.DeleteAsync(patId);
+            var data = await _patientService.DeleteAsync(id);
             return StatusCode(data.Status, data);
         }
-        [HttpPut]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin,User")]
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
         public async Task<IActionResult> Update(PatientsDto patient, int id)
         {

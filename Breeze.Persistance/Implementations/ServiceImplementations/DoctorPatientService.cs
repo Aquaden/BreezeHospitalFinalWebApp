@@ -30,10 +30,10 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             _docPatRepository = _unitOfWork.GetRepository<DoctorPatients>();
         }
 
-        public async Task<ResponseModel<DoctorPatientAddDto>> AddAsync(DoctorPatientAddDto docPat)
+        public async Task<ResponseModel<DoctorPatientAddDto>> AddAsync(DoctorPatientAddDto doctorPatient)
         {
             ResponseModel<DoctorPatientAddDto> responseModel = new ResponseModel<DoctorPatientAddDto>() { Data = null,Status = 400};
-            DoctorPatients doctPat = _mapper.Map<DoctorPatients>(docPat);
+            DoctorPatients doctPat = _mapper.Map<DoctorPatients>(doctorPatient);
             if (doctPat != null)
             {
                 await _docPatRepository.Add(doctPat);
@@ -41,7 +41,7 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
                 if (rows > 0)
                 {
                     responseModel.Status = 200;
-                    responseModel.Data = docPat;
+                    responseModel.Data = doctorPatient;
                 }
 
             }
@@ -71,11 +71,11 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
         public async Task<ResponseModel<List<DoctorPatientDto>>> GetAllAsync()
         {
             ResponseModel<List<DoctorPatientDto>> responseModel = new ResponseModel<List<DoctorPatientDto>>() { Data = null, Status = 400 };
-            List<DoctorPatients> docPats = await _docPatRepository.GetAll().ToListAsync();
+            List<DoctorPatients> doctorPatients = await _docPatRepository.GetAll().ToListAsync();
             
-            if (docPats != null && docPats.Count > 0)
+            if (doctorPatients != null && doctorPatients.Count > 0)
             {
-                List<DoctorPatientDto> doctPat = _mapper.Map<List<DoctorPatientDto>>(docPats);
+                List<DoctorPatientDto> doctPat = _mapper.Map<List<DoctorPatientDto>>(doctorPatients);
                 
                 if (doctPat != null)
                 {
@@ -106,13 +106,13 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<bool>> UpdateAsync(DoctorPatientDto docpat)
+        public async Task<ResponseModel<bool>> UpdateAsync(DoctorPatientAddDto doctorPatient,int id)
         {
             ResponseModel<bool> responseModel = new ResponseModel<bool>() { Data = false, Status = 404 };
-            var olddata = await _docPatRepository.GetByid(docpat.Id);
+            var olddata = await _docPatRepository.GetByid(id);
             if (olddata != null)
             {
-                _mapper.Map<DoctorPatientDto, DoctorPatients>(docpat, olddata);
+                _mapper.Map<DoctorPatientAddDto, DoctorPatients>(doctorPatient, olddata);
                 var rows = await _unitOfWork.SaveAsync();
                 if (rows > 0)
                 {
