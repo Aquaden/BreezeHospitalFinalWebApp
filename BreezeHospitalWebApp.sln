@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreezeHospitalWebApp", "BreezeHospital\BreezeHospitalWebApp.csproj", "{71906816-9FF6-4A97-9749-D83BFA5305C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{06D5E2DC-84BA-4055-AD9A-8E3ADF59766A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2494C488-21EE-43E4-BCEC-EB35C587A1F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breeze.Application", "Breeze.Application\Breeze.Application.csproj", "{E74FE0F3-85AE-4C98-AF02-352EC9BD5317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breeze.Domain", "Breeze.Domain\Breeze.Domain.csproj", "{65192B60-D7C4-4247-B34D-5ED366B869A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breeze.Persistance", "Breeze.Persistance\Breeze.Persistance.csproj", "{E4E9EF6A-1D25-4BB5-8456-28A6F78F4EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breeze.Infrastructure", "Breeze.Infrastructure\Breeze.Infrastructure.csproj", "{050420E5-AB34-4650-A35D-71C7F5B989EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71906816-9FF6-4A97-9749-D83BFA5305C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71906816-9FF6-4A97-9749-D83BFA5305C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71906816-9FF6-4A97-9749-D83BFA5305C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71906816-9FF6-4A97-9749-D83BFA5305C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74FE0F3-85AE-4C98-AF02-352EC9BD5317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74FE0F3-85AE-4C98-AF02-352EC9BD5317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74FE0F3-85AE-4C98-AF02-352EC9BD5317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74FE0F3-85AE-4C98-AF02-352EC9BD5317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65192B60-D7C4-4247-B34D-5ED366B869A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65192B60-D7C4-4247-B34D-5ED366B869A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65192B60-D7C4-4247-B34D-5ED366B869A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65192B60-D7C4-4247-B34D-5ED366B869A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E9EF6A-1D25-4BB5-8456-28A6F78F4EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E9EF6A-1D25-4BB5-8456-28A6F78F4EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E9EF6A-1D25-4BB5-8456-28A6F78F4EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E9EF6A-1D25-4BB5-8456-28A6F78F4EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{050420E5-AB34-4650-A35D-71C7F5B989EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050420E5-AB34-4650-A35D-71C7F5B989EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050420E5-AB34-4650-A35D-71C7F5B989EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050420E5-AB34-4650-A35D-71C7F5B989EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E74FE0F3-85AE-4C98-AF02-352EC9BD5317} = {06D5E2DC-84BA-4055-AD9A-8E3ADF59766A}
+		{65192B60-D7C4-4247-B34D-5ED366B869A5} = {06D5E2DC-84BA-4055-AD9A-8E3ADF59766A}
+		{E4E9EF6A-1D25-4BB5-8456-28A6F78F4EC5} = {2494C488-21EE-43E4-BCEC-EB35C587A1F4}
+		{050420E5-AB34-4650-A35D-71C7F5B989EE} = {2494C488-21EE-43E4-BCEC-EB35C587A1F4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E7EA481-37B8-4BA1-9FC5-0D36A010C357}
+	EndGlobalSection
+EndGlobal
