@@ -56,7 +56,7 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<TokenDto>> CreateNewResreshTokenAsync(string refreshToken)
+        public async Task<ResponseModel<TokenDto>> CreateNewTokenAsync(string refreshToken)
         {
             ResponseModel<TokenDto> responseModel = new ResponseModel<TokenDto>() { Data = null, Status = 404 };
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
@@ -112,23 +112,20 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             return responseModel;
         }
 
-        public async Task<ResponseModel<bool>> PasswordResetAsync(string email, string curPas, string newPas)
+        public async Task<ResponseModel<bool>> PasswordResetAsync(string email, string currentPassword, string newPassword)
         {
             ResponseModel<bool> responseModel = new ResponseModel<bool>() { Data = false, Status = 400 };
             var user = await _userManager.FindByEmailAsync(email);
             if (user != null)
             {
-                var result = await _signInManager.CheckPasswordSignInAsync(user, curPas, false);
-                if (result.Succeeded)
-                {
-                    var changePassword = _userManager.ChangePasswordAsync(user, curPas, newPas);
+                var changePassword = _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
 
-                    if (changePassword.IsCompletedSuccessfully)
-                    {
-                        responseModel.Data = true;
-                        responseModel.Status = 200;
-                    }
+                if (changePassword.IsCompletedSuccessfully)
+                {
+                    responseModel.Data = true;
+                    responseModel.Status = 200;
                 }
+
             }
             return responseModel;
         }

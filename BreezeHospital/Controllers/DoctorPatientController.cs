@@ -38,9 +38,9 @@ namespace BreezeHospitalWebApp.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [ValidateModel]
-        public async Task<IActionResult> Add(DoctorPatientAddDto docPat)
+        public async Task<IActionResult> Add(DoctorPatientAddDto doctorPatient)
         {
-            var data = await _doctPatService.AddAsync(docPat);
+            var data = await _doctPatService.AddAsync(doctorPatient);
             return StatusCode(data.Status, data);
         }
         [HttpDelete("{id}")]

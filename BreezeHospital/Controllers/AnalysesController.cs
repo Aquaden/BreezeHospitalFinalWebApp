@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BreezeHospitalWebApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AnalysesController : ControllerBase
     {

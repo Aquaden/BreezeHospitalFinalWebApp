@@ -30,15 +30,15 @@ namespace BreezeHospitalWebApp.Controllers
         }
         [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPost]
-        public async Task<IActionResult> UpdatePassword(string email, string curPas, string newPas)
+        public async Task<IActionResult> UpdatePassword(string email, string currentPassword, string newPassword)
         {
-            var data = await _authoService.PasswordResetAsync(email, curPas, newPas);
+            var data = await _authoService.PasswordResetAsync(email, currentPassword, newPassword);
             return StatusCode(data.Status, data);
         }
         [HttpGet]
-        public async Task<IActionResult> CreateNewRefreshToken(string refreshtoken)//deyish
+        public async Task<IActionResult> CreateNewToken(string refreshtoken)
         {
-            var data = await _authoService.CreateNewResreshTokenAsync(refreshtoken);
+            var data = await _authoService.CreateNewTokenAsync(refreshtoken);
             return StatusCode(data.Status, data);
 
         }

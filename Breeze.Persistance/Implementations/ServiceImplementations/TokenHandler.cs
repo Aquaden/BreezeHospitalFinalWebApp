@@ -55,14 +55,14 @@ namespace Breeze.Persistance.Implementations.ServiceImplementations
             //token yaradiriq
             JwtSecurityTokenHandler tokenHandler = new();
             tokenDto.AccessToken = tokenHandler.WriteToken(securityToken);
-            tokenDto.RefreshToken = CresteRefreshToken();
+            tokenDto.RefreshToken = CreateRefreshToken();
 
             return tokenDto;
 
 
         }
 
-        public string CresteRefreshToken()
+        public string CreateRefreshToken()
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["JWT:RefreshTokenSecret"]);

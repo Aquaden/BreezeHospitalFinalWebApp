@@ -11,6 +11,6 @@ namespace Breeze.Application.Abstractions.IServices
     public interface ITokenHandler
     {
         Task<TokenDto> CreateAccessToken(AppUser user);
-        string CresteRefreshToken();
+        string CreateRefreshToken();
     }
 }
